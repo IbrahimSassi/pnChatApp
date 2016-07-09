@@ -1,0 +1,69 @@
+<h4>Welcome {{data.username}}, click to select a channel below [<a href="#/join">Sign Out</a>]</h4>
+
+
+<ul class="list-unstyled list-inline">
+    <li class="roomlabel" ng-repeat="channel in channels">
+        <a class="btn btn-info" href='' ng-class="{'label-default': user != data.username,
+        'label-default': (channel != selectedChannel), 'label-success':(channel == selectedChannel)}" ng-click='subscribe(channel)'>
+            <i clas='fa' ng-class="{'fa-spin':(channel == selectedChannel), 'fa-spinner':(channel == selectedChannel),
+             'fa-comments':(channel != selectedChannel)}"></i>
+            {{channel}}
+        </a>
+    </li>
+
+    <li class="roomlabel">
+        <a href="" class="btn btn-default" ng-click="showCreate = !showCreate">
+            <i class="fa fa-magic"></i> Create new ...
+        </a>
+    </li>
+    <div ng-show="showCreate">
+    <form action="" ng-submit="createChannel()">
+        <h6>Create new Room</h6>
+        <div class="input-group">
+            <input type="text" class="input-sm form-control" ng-model="newChannel" placeholder="Room Name">
+            <span class="input-group-btn">
+                <input type="submit" class="input-sm btn btn-default" value="Go !">
+            </span>
+        </div>
+        <br>
+        <br>
+    </form>
+</div>
+
+
+</ul>
+<br>
+<div class="row">
+    <div class="col-md-2">
+        <small class="marker">Users In Room</small>
+        <ul class="list-unstyled">
+            <li ng-repeat="user in users">
+        <span class='label btn-mini userlabel' ng-class="{'label-default': user != data.username, 'label-success': (user == data.username)}" title='(Location:{{userdata[user].city || "unknown"}})'>
+          <i class="fa fa-user"></i>
+          {{user}}
+        </span>
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-10">
+       <form action="" ng-submit="publish()">
+           <div class="input-group">
+               <input type="text" ng-model="newMessage" class="input-sm form-control" placeholder="Type a message">
+               <span class="input-group-btn">
+                   <input type="submit" value="Send" class="input-sm btn btn-default">
+               </span>
+           </div>
+       </form>
+        <br>
+        <br>
+        <div class="well chatbox" id="chat_history">
+            <ul class="list-unstyled">
+                <li ng-repeat="message in messages ">
+                     <i class="fa fa-comment"></i>
+                     &nbsp;
+                     {{message}}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

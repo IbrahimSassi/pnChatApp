@@ -25,7 +25,7 @@ angular.module('pnChatApp')
         console.log($rootScope);
         
         PubNub.init({
-            subscribe_key :'Your sub key',
+            subscribe_key :'your subs key',
             publish_key:'your pub key',
             uuid:$rootScope.data.uuid
         });

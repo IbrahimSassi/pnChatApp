@@ -30,7 +30,8 @@ angular.module('pnChatApp')
                     channel: $scope.selectedChannel,
                     message: {
                         text: $scope.newMessage,
-                        user: $scope.data.username
+                        user: $scope.data.username,
+                        date: moment().format('MMMM Do YYYY, h:mm:ss a')
                     }
                 });
                 return $scope.newMessage = '';
@@ -103,7 +104,7 @@ angular.module('pnChatApp')
                 }
 
                 $scope.selectedChannel = channel;
-                ;
+
                 $scope.messages = ['Welcome To ' + channel];
 
 
@@ -155,12 +156,16 @@ angular.module('pnChatApp')
                     $rootScope.$on(PubNub.ngMsgEv($scope.selectedChannel), function (ngEvent,payload) {
                         var msg = {
                             message :'',
-                            user:''
+                            user:'',
+                            date:''
+
                         };
 
                             msg.message = payload.message.text;
                             msg.user = payload.message.user;
+                        console.log(payload.message.date);
 
+                        msg.date = moment(payload.message.date, "MMMM Do YYYY, h:mm:ss a").fromNow();
 
                         return $scope.$apply(function () {
 

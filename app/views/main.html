@@ -60,12 +60,22 @@
             <ul class="list-unstyled">
                 <li ng-repeat="message in messages ">
 
-                    <span  ng-class="{'yourMsg message': message.user!=data.username, ' myMsg message': message.user==data.username}">
-                        <i class="fa fa-comment"></i>
-                     &nbsp;
-                    <{{message.user}}> {{message.message}}
+                    <div class="media-body pad-hor" ng-class="{'media-body pad-hor speech-right': message.user!=data.username, ' media-body pad-hor': message.user==data.username}">
+                        <div class="speech">
+                            <p class="media-heading">{{message.user}} :</p>
+                            <p> <i class="fa fa-comment"></i>
+                                &nbsp;
 
-                    </span>
+
+                                {{message.message}} </p>
+                            <p class="speech-time">
+                                <i class="fa fa-clock-o fa-fw"></i>{{message.date}}
+                            </p>
+                        </div>
+                    </div>
+
+
+
                 </li>
             </ul>
         </div>

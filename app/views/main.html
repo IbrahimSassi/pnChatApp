@@ -5,7 +5,7 @@
     <li class="roomlabel" ng-repeat="channel in channels">
         <a class="btn btn-info" href='' ng-class="{'label-default': user != data.username,
         'label-default': (channel != selectedChannel), 'label-success':(channel == selectedChannel)}" ng-click='subscribe(channel)'>
-            <i clas='fa' ng-class="{'fa-spin':(channel == selectedChannel), 'fa-spinner':(channel == selectedChannel),
+            <i class='fa' ng-class="{'fa-spin':(channel == selectedChannel), 'fa-spinner':(channel == selectedChannel),
              'fa-comments':(channel != selectedChannel)}"></i>
             {{channel}}
         </a>
@@ -56,14 +56,14 @@
        </form>
         <br>
         <br>
-        <div class="well chatbox" id="chat_history">
+        <div class="chatbox" id="chat_history">
             <ul class="list-unstyled">
                 <li ng-repeat="message in messages ">
 
-                    <span  ng-class="{'': message.indexOf('['+data.username), 'label-success': !(message.indexOf('['+data.username))}">
+                    <span  ng-class="{'yourMsg message': message.user!=data.username, ' myMsg message': message.user==data.username}">
                         <i class="fa fa-comment"></i>
                      &nbsp;
-                     {{message}}
+                    <{{message.user}}> {{message.message}}
 
                     </span>
                 </li>

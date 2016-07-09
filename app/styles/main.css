@@ -5,6 +5,35 @@
   padding: 0.2em 0;
 }
 
+.chatbox{
+    border-right: thin solid #006666;
+    border-left: thin solid #006666;
+}
+
+.myMsg{
+    font-size: larger;
+    background: #00B0FF;
+    color: #ffffff;
+}
+.yourMsg{
+    margin-left: 50%;
+    background: #ECEFF1;
+    color: #000000;
+
+}
+
+
+.message{
+    display:inline-block;
+    padding:13px;
+    width:274px;
+    border-radius:2em;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+    position:relative;
+    margin-bottom: 2px;
+}
+
+
 body {
   padding: 0;
 }
@@ -80,4 +109,6 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+
+
 }

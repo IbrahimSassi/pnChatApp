@@ -90,6 +90,8 @@ angular.module('pnChatApp')
             
             $scope.subscribe = function (channel) {
                 var _ref;
+
+
                 console.log('Subscribing ... ');
                 if(channel === $scope.selectedChannel){
                     return;
@@ -101,6 +103,7 @@ angular.module('pnChatApp')
                 }
 
                 $scope.selectedChannel = channel;
+                ;
                 $scope.messages = ['Welcome To ' + channel];
 
 
@@ -150,24 +153,18 @@ angular.module('pnChatApp')
 
 
                     $rootScope.$on(PubNub.ngMsgEv($scope.selectedChannel), function (ngEvent,payload) {
-                        var msg;
-                        console.log("payload " + payload.message.user);
-                        console.log("user " + $scope.data.username);
-                            msg = payload.message.user ? "[" + payload.message.user + "] " + payload.message.text : payload.message.text;
+                        var msg = {
+                            message :'',
+                            user:''
+                        };
+
+                            msg.message = payload.message.text;
+                            msg.user = payload.message.user;
 
 
                         return $scope.$apply(function () {
 
 
-                            /*if(payload.message.user === $scope.data.username)
-                            {
-                                return $scope.messages.unshift("ME " + msg);
-                            }
-                            else
-                            {
-                                return $scope.messages.unshift(msg);
-
-                            }*/
 
                             return $scope.messages.unshift(msg);
 

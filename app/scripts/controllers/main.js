@@ -151,9 +151,26 @@ angular.module('pnChatApp')
 
                     $rootScope.$on(PubNub.ngMsgEv($scope.selectedChannel), function (ngEvent,payload) {
                         var msg;
-                        msg = payload.message.user ? "[" + payload.message.user + "] " + payload.message.text : payload.message.text;
+                        console.log("payload " + payload.message.user);
+                        console.log("user " + $scope.data.username);
+                            msg = payload.message.user ? "[" + payload.message.user + "] " + payload.message.text : payload.message.text;
+
+
                         return $scope.$apply(function () {
+
+
+                            /*if(payload.message.user === $scope.data.username)
+                            {
+                                return $scope.messages.unshift("ME " + msg);
+                            }
+                            else
+                            {
+                                return $scope.messages.unshift(msg);
+
+                            }*/
+
                             return $scope.messages.unshift(msg);
+
                         });
                     });
 

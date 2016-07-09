@@ -59,9 +59,13 @@
         <div class="well chatbox" id="chat_history">
             <ul class="list-unstyled">
                 <li ng-repeat="message in messages ">
-                     <i class="fa fa-comment"></i>
+
+                    <span  ng-class="{'': message.indexOf('['+data.username), 'label-success': !(message.indexOf('['+data.username))}">
+                        <i class="fa fa-comment"></i>
                      &nbsp;
                      {{message}}
+
+                    </span>
                 </li>
             </ul>
         </div>
